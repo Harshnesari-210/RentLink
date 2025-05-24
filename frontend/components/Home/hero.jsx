@@ -362,7 +362,7 @@ const Hero = () => {
   useEffect(() => {
     const fetchHomes = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/getHouses", {
+        const response = await axios.get("/api/getHouses", {
           withCredentials: true,
         });
 
@@ -399,7 +399,7 @@ const Hero = () => {
   const fetchFilteredHomes = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/filterHouse",
+        "/api/filterHouse",
         filters,
         { withCredentials: true }
       );

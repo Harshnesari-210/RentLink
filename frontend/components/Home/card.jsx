@@ -137,7 +137,7 @@ const Card = ({
     >
       {/* Display cover image */}
       <img
-        src={`http://localhost:3000${coverImage}`}
+        src={`/api/${coverImage}`}
         alt={hometype}
         className="w-full h-40 object-cover mb-4 rounded"
       />

@@ -9,7 +9,7 @@ const HostedHouse = () => {
   useEffect(() => {
     const fetchLandlordHouses = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/landlordHouse', { withCredentials: true });
+        const response = await axios.get('/api/landlordHouse', { withCredentials: true });
         setHouses(response.data.landlordHouses);
       } catch (error) {
         console.error('Error fetching house data:', error);

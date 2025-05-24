@@ -242,7 +242,7 @@ const PublishHouse = () => {
       formData.append("coverImage", coverImage);
 
       const response = await axios.post(
-        "http://localhost:3000/addHouse",
+        "/api/addHouse",
         formData,
         {
           withCredentials: true,

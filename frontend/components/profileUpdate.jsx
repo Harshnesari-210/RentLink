@@ -114,7 +114,7 @@ const ProfileUpdate = () => {
   useEffect(() => {
     const fetchProfileDetails = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/userProfile", { withCredentials: true });
+        const response = await axios.get("/api/userProfile", { withCredentials: true });
         const { contactNumber, address } = response.data;
         setContactNumber(contactNumber || "");
         setAddress(address || "");
@@ -131,7 +131,7 @@ const ProfileUpdate = () => {
     e.preventDefault();
     try {
       const response = await axios.put(
-        "http://localhost:3000/profile/update", // Backend API endpoint
+        "/api/profile/update", // Backend API endpoint
         { contactNumber, address }, // Data to update
         { withCredentials: true } // Include cookies for authentication
       );

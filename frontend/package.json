@@ -29,7 +29,8 @@
   },
   "scripts": {
     "start": "vite",
-    "test": "jest"
+    "test": "jest",
+    "biuld":"vite build"
   },
   "keywords": [],
   "author": "",

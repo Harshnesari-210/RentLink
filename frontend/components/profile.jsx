@@ -296,7 +296,7 @@ const Profile = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/userProfile', { withCredentials: true });
+        const response = await axios.get('/api/userProfile', { withCredentials: true });
         console.log(response); // Log the full response for debugging
         setUser(response.data.user); // Set user data
         setBookings(response.data.bookings || []); // Set bookings data (empty array if no bookings)
@@ -316,7 +316,7 @@ const Profile = () => {
   try {
     // Send payment update request to the backend
     const response = await axios.post(
-      'http://localhost:3000/updatePayment',
+      '/api/updatePayment',
       { bookingId },
       { withCredentials: true }
     );

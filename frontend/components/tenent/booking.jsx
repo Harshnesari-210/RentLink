@@ -143,7 +143,7 @@ const Book = () => {
     const fetchHouseDetails = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/tenent/displayHouse/${id}`,
+          `/api/tenent/displayHouse/${id}`,
           { withCredentials: true }
         );
         setHouse(response.data);
@@ -169,7 +169,7 @@ const Book = () => {
   const handleBooking = async () => {
     try {
       const response = await axios.post(
-        `http://localhost:3000/bookHouse/${id}`,
+        `/api/bookHouse/${id}`,
         { bookingDate, duration, paymentStatus },
         { withCredentials: true }
       );

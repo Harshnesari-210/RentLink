@@ -358,7 +358,7 @@ const HouseDetailsDesign = () => {
     const fetchHouseData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/tenent/displayHouse/${id}`,
+          `/api/tenent/displayHouse/${id}`,
           { withCredentials: true }
         );
         setHouse(response.data);
@@ -421,7 +421,7 @@ const HouseDetailsDesign = () => {
             {images.map((img, index) => (
               <div key={index} className="w-full h-[300px]">
                 <img
-                  src={`http://localhost:3000${img}`}
+                  src={`/api/${img}`}
                   alt={`Image ${index + 1}`}
                   className="w-full h-full object-contain rounded-lg"
                 />
@@ -431,7 +431,7 @@ const HouseDetailsDesign = () => {
         ) : (
           <div className="w-full h-[300px]">
             <img
-              src={`http://localhost:3000${coverImage}`}
+              src={`/api/${coverImage}`}
               alt="Cover Image"
               className="w-full h-full object-contain rounded-lg shadow-lg"
             />
