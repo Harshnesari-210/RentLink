@@ -21,3 +21,12 @@ BACK-END
 
 FROENT-END
 -
+
+TESTING
+-Developer Testing
+ -Unit Testing
+ -Integratin Testing
+ -End to End Testing (e2e testing)
+
+
+ REacr esting Library and Jest

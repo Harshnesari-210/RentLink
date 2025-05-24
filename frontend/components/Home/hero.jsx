@@ -431,14 +431,7 @@ const Hero = () => {
           </div>
           <div className="flex justify-center space-x-4 mb-10">
             {/* Add Filter Inputs */}
-            <input
-          type="text"
-          name="location"
-          value={filters.location}
-          onChange={handleFilterChange}
-          className="px-4 py-2 rounded border border-gray-300 w-40"
-          placeholder="Location"
-        />
+            
         <select
           name="hometype"
           value={filters.hometype}
@@ -448,8 +441,7 @@ const Hero = () => {
           <option value="">All Types</option>
           <option value="House">House</option>
           <option value="Apartment">Apartment</option>
-          <option value="Villa">Villa</option>
-          <option value="Studio">Studio</option>
+
         </select>
         <input
           type="number"
@@ -459,14 +451,7 @@ const Hero = () => {
           className="px-4 py-2 rounded border border-gray-300 w-40"
           placeholder="Bedrooms"
         />
-        <input
-          type="number"
-          name="bathrooms"
-          value={filters.bathrooms}
-          onChange={handleFilterChange}
-          className="px-4 py-2 rounded border border-gray-300 w-40"
-          placeholder="Bathrooms"
-        />
+      
         <input
           type="number"
           name="price"
@@ -521,7 +506,7 @@ const Hero = () => {
     muted
     style={{ maxWidth: "100%", borderRadius: "10px" }}
   />
-  <h2 className="text-2xl font-bold mb-4">Welcome to RentLink</h2>
+  <h2 className="text-4xl font-bold mb-4">Welcome to RentLink</h2>
   <p className="text-gray-700 mb-6">
     RentLink connects tenants and landlords, offering a seamless way to
     find your dream home or list your property.

@@ -337,13 +337,34 @@ homeRouter.post("/addHouse", isAuth, upload.single("coverImage"), async (req, re
 
 
 // Update House
+homeRouter.delete("/deleteHouse/:houseId", isAuth, async (req, res) => {
+  const { role } = req.user;
+
+  if (role === "Tenant") {
+    return res.status(400).json({ message: "Tenants cannot delete houses" });
+  }
+
+  const { houseId } = req.params;
+
+  try {
+    const house = await House.findById(houseId);
+    if (!house) {
+      return res.status(404).json({ message: "House not found" });
+    }
+    await house.deleteOne();
+    res.status(200).json({ message: "House deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting house:", error);
+    res.status(500).json({ message: "Error deleting house", error: error.message });
+  }
+});
+
+// Delete House
 homeRouter.put("/updateHouse/:id", isAuth, async (req, res) => {
   const { role } = req.user;
 
   if (role === "Tenant") {
-    return res.status(400).json({
-      message: "Tenant cannot have access to update the house",
-    });
+    return res.status(400).json({ message: "Tenants cannot update houses" });
   }
 
   const { id } = req.params;
@@ -353,59 +374,12 @@ homeRouter.put("/updateHouse/:id", isAuth, async (req, res) => {
       new: true,
       runValidators: true,
     });
-
-    if (!updatedHouse) {
-      return res.status(404).json({
-        message: "House not found",
-      });
-    }
-
-    res.status(200).json({
-      message: "House updated successfully",
-      updatedHouse,
-    });
+    res.status(200).json({ message: "House updated successfully", updatedHouse });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({
-      message: "Error while updating house",
-      error: error.message,
-    });
+    console.error("Error updating house:", error);
+    res.status(500).json({ message: "Error updating house", error: error.message });
   }
 });
 
-// Delete House
-homeRouter.delete("/deleteHouse/:id", isAuth, async (req, res) => {
-  const { role } = req.user;
-
-  if (role === "Tenant") {
-    return res.status(400).json({
-      message: "Tenant cannot have access to delete the house",
-    });
-  }
-
-  const { id } = req.params;
-
-  try {
-    const house = await House.findById(id);
-
-    if (!house) {
-      return res.status(404).json({
-        message: "House not found",
-      });
-    }
-
-    await house.deleteOne();
-
-    res.status(200).json({
-      message: "House deleted successfully",
-    });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({
-      message: "Error while deleting house",
-      error: error.message,
-    });
-  }
-});
 
 export default homeRouter;
